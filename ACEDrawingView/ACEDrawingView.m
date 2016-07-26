@@ -644,5 +644,15 @@
 #endif
 }
 
+- (UIImage *)boldedCopy {
+    for (id<ACEDrawingTool>tool in self.pathArray) {
+        tool.lineWidth = 5;
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0);
+        [tool draw];
+        UIImage *copyImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return copyImage;
+    }
+}
 
 @end
